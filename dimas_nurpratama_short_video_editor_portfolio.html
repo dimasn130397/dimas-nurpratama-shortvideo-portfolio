@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimas Nurpratama — Short Video Editor & Social Media Creative</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#0D0F14',
+                        cardBg: '#151922',
+                        cardBorder: '#242A38',
+                        neonYellow: '#FFD60A',
+                        coralRed: '#FF4D4D',
+                        electricCyan: '#00E5FF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D0F14;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+        .comic-shadow {
+            box-shadow: 4px 4px 0px #FFD60A;
+        }
+        .comic-shadow-cyan {
+            box-shadow: 4px 4px 0px #00E5FF;
+        }
+        .comic-shadow-red {
+            box-shadow: 4px 4px 0px #FF4D4D;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #FFD60A 0%, #FF4D4D 50%, #00E5FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        .blob-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-neonYellow selection:text-darkBg">
+
+    <!-- Toast Notification for Copy Actions -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 bg-neonYellow text-darkBg font-bold px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-darkBg/85 backdrop-blur-md border-b border-cardBorder">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#" class="font-display font-bold text-xl tracking-tight flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-neonYellow text-darkBg flex items-center justify-center font-extrabold text-sm">DN</span>
+                <span>Dimas<span class="text-neonYellow">.edits</span></span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#work" class="hover:text-neonYellow transition-colors">Featured Work</a>
+                <a href="#pitch-rmr" class="hover:text-electricCyan transition-colors">Run Monster Run Pitch</a>
+                <a href="#toolkit" class="hover:text-neonYellow transition-colors">Editing Style & Tools</a>
+                <a href="#experience" class="hover:text-neonYellow transition-colors">Background</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <button onclick="openContactModal()" class="bg-neonYellow hover:bg-yellow-300 text-darkBg font-bold text-xs sm:text-sm px-4 py-2 rounded-lg transition-transform active:scale-95">
+                    Hire / Contact Me
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-14 pb-20 sm:pt-20 sm:pb-28 grid-pattern overflow-hidden">
+        <!-- Ambient Background Glows -->
+        <div class="absolute -top-24 -left-24 w-72 h-72 bg-neonYellow/15 rounded-full blur-3xl blob-glow pointer-events-none"></div>
+        <div class="absolute top-32 -right-24 w-80 h-80 bg-electricCyan/15 rounded-full blur-3xl blob-glow pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-3xl">
+                <!-- Availability Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cardBg border border-cardBorder text-xs sm:text-sm font-semibold text-neonYellow mb-6">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span>
+                    Available Immediately • Short Video Editor & Social Media Creative
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-6">
+                    Turning Raw Footage & <span class="gradient-text">Animated Chaos</span> Into Scroll-Stopping Clips.
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+                    Hi, I'm <strong class="text-white">Dimas Nurpratama</strong>. I blend sharp internet-culture instincts, high-retention 2-second hooks, and manga-inspired visual flair to craft TikToks & Reels that audiences actually watch, replay, and send to their group chats.
+                </p>
+
+                <!-- Primary & Secondary CTA Buttons -->
+                <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                    <a href="#work" class="bg-neonYellow hover:bg-yellow-300 text-darkBg font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 comic-shadow active:translate-y-0.5">
+                        <i class="fa-solid fa-play"></i> Explore Featured Work
+                    </a>
+                    <a href="https://www.tiktok.com/@masdomos" target="_blank" rel="noopener noreferrer" class="bg-cardBg hover:bg-gray-800 border border-cardBorder text-white font-semibold px-5 py-3.5 rounded-xl transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-tiktok text-electricCyan"></i> @masdomos
+                    </a>
+                    <a href="https://www.instagram.com/ohayosushiofficial/" target="_blank" rel="noopener noreferrer" class="bg-cardBg hover:bg-gray-800 border border-cardBorder text-white font-semibold px-5 py-3.5 rounded-xl transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-instagram text-coralRed"></i> @ohayosushiofficial
+                    </a>
+                </div>
+            </div>
+
+            <!-- Key Metrics Bar -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14 sm:mt-16">
+                <div class="bg-cardBg/90 border border-cardBorder p-5 rounded-2xl">
+                    <div class="text-neonYellow font-display text-2xl sm:text-3xl font-bold mb-1">5+ Years</div>
+                    <p class="text-xs sm:text-sm text-gray-400">Moderating & analyzing 300+ social videos with 100% KPI accuracy</p>
+                </div>
+                <div class="bg-cardBg/90 border border-cardBorder p-5 rounded-2xl">
+                    <div class="text-coralRed font-display text-2xl sm:text-3xl font-bold mb-1">5,579+</div>
+                    <p class="text-xs sm:text-sm text-gray-400">Followers & 682+ posts managed on Instagram (<span class="text-gray-200">@ohayosushiofficial</span>)</p>
+                </div>
+                <div class="bg-cardBg/90 border border-cardBorder p-5 rounded-2xl">
+                    <div class="text-electricCyan font-display text-2xl sm:text-3xl font-bold mb-1">744+ Views</div>
+                    <p class="text-xs sm:text-sm text-gray-400">Organic reach per clip on fresh hook-driven TikTok edits (<span class="text-gray-200">@masdomos</span>)</p>
+                </div>
+                <div class="bg-cardBg/90 border border-cardBorder p-5 rounded-2xl">
+                    <div class="text-white font-display text-2xl sm:text-3xl font-bold mb-1">6+ Tools</div>
+                    <p class="text-xs sm:text-sm text-gray-400">CapCut, VN, Filmora, Adobe Illustrator, Photoshop & Canva</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Portfolio Showcase -->
+    <section id="work" class="py-16 sm:py-24 border-t border-cardBorder">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="text-neonYellow font-semibold text-xs uppercase tracking-wider">Proof of Work</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold mt-1">Featured Edits & Social Campaigns</h2>
+                </div>
+
+                <!-- Interactive Filter Tabs -->
+                <div class="flex flex-wrap gap-2" id="filter-buttons">
+                    <button onclick="filterProjects('all', this)" class="filter-btn active bg-neonYellow text-darkBg font-bold text-xs sm:text-sm px-4 py-2 rounded-lg transition-all">
+                        All Projects
+                    </button>
+                    <button onclick="filterProjects('tiktok', this)" class="filter-btn bg-cardBg text-gray-300 hover:text-white border border-cardBorder font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition-all">
+                        TikTok Hook Edits
+                    </button>
+                    <button onclick="filterProjects('brand', this)" class="filter-btn bg-cardBg text-gray-300 hover:text-white border border-cardBorder font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition-all">
+                        Reels & Manga Graphics
+                    </button>
+                    <button onclick="filterProjects('animation', this)" class="filter-btn bg-cardBg text-gray-300 hover:text-white border border-cardBorder font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition-all">
+                        Animation Pitch
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="projects-grid">
+
+                <!-- Project 1: TikTok @masdomos -->
+                <article class="project-card bg-cardBg border border-cardBorder rounded-2xl overflow-hidden flex flex-col justify-between hover:border-electricCyan/60 transition-all" data-category="tiktok">
+                    <div>
+                        <!-- Visual Interactive Phone Hook Preview Header -->
+                        <div class="bg-gradient-to-br from-gray-900 via-[#121826] to-[#0b2530] p-6 border-b border-cardBorder">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full bg-electricCyan/15 text-electricCyan text-xs font-bold">
+                                    <i class="fa-brands fa-tiktok mr-1"></i> TikTok Creator Channel
+                                </span>
+                                <span class="text-xs text-gray-400 font-medium">786+ Likes • 500–744 Views/Clip</span>
+                            </div>
+
+                            <!-- Simulated TikTok Hook Cards Grid from Screenshot -->
+                            <div class="grid grid-cols-3 gap-2.5">
+                                <div class="bg-darkBg/90 border border-gray-700 rounded-xl p-2.5 flex flex-col justify-between h-36 relative overflow-hidden">
+                                    <span class="text-[10px] font-bold bg-coralRed text-white px-1.5 py-0.5 rounded w-fit">HOOK #1</span>
+                                    <p class="text-[11px] font-bold leading-snug text-white">"NO WAY!! I finished my IELTS and THEN found this ??? 😱"</p>
+                                    <div class="flex items-center justify-between text-[10px] text-gray-400">
+                                        <span><i class="fa-solid fa-play text-[9px]"></i> 674</span>
+                                        <span class="text-electricCyan">Curiosity Cut</span>
+                                    </div>
+                                </div>
+                                <div class="bg-darkBg/90 border border-gray-700 rounded-xl p-2.5 flex flex-col justify-between h-36 relative overflow-hidden">
+                                    <span class="text-[10px] font-bold bg-neonYellow text-darkBg px-1.5 py-0.5 rounded w-fit">HOOK #2</span>
+                                    <p class="text-[11px] font-bold leading-snug text-white">"POV: u opened one link and accidentally started understanding IELTS??!"</p>
+                                    <div class="flex items-center justify-between text-[10px] text-gray-400">
+                                        <span><i class="fa-solid fa-play text-[9px]"></i> 744</span>
+                                        <span class="text-neonYellow">POV Trend</span>
+                                    </div>
+                                </div>
+                                <div class="bg-darkBg/90 border border-gray-700 rounded-xl p-2.5 flex flex-col justify-between h-36 relative overflow-hidden">
+                                    <span class="text-[10px] font-bold bg-electricCyan text-darkBg px-1.5 py-0.5 rounded w-fit">HOOK #3</span>
+                                    <p class="text-[11px] font-bold leading-snug text-white">"My IELTS score glow-up IS KINDA CRAZY 📈 (Before vs After)"</p>
+                                    <div class="flex items-center justify-between text-[10px] text-gray-400">
+                                        <span><i class="fa-solid fa-play text-[9px]"></i> 704</span>
+                                        <span class="text-coralRed">Fast Reveal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6">
+                            <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+                                Mas Domos, English Rookie (<span class="text-electricCyan">@masdomos</span>)
+                            </h3>
+                            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                                Short-Form Video Editor, On-Cam Talent & Hook Strategist
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Built an organic TikTok edutainment series ("English Aldol") from scratch. Designed scroll-stopping opening hooks, dynamic emoji captions, reaction zooms, and rapid before/after score reveals—consistently hitting 500–744+ organic views per clip on a brand-new account.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">CapCut</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">POV Storytelling</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">Retention Hooks</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">Kinetic Captions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6">
+                        <a href="https://www.tiktok.com/@masdomos" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-darkBg hover:bg-electricCyan hover:text-darkBg border border-electricCyan/50 text-electricCyan font-bold text-sm py-3 rounded-xl transition-all">
+                            <i class="fa-brands fa-tiktok"></i> Watch Live Edits on TikTok (@masdomos)
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Instagram @ohayosushiofficial -->
+                <article class="project-card bg-cardBg border border-cardBorder rounded-2xl overflow-hidden flex flex-col justify-between hover:border-coralRed/60 transition-all" data-category="brand">
+                    <div>
+                        <!-- Visual Header Reflecting Manga/Comic & Food Reels Aesthetic -->
+                        <div class="bg-gradient-to-br from-[#231518] via-[#1c1622] to-gray-900 p-6 border-b border-cardBorder">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full bg-coralRed/15 text-coralRed text-xs font-bold">
+                                    <i class="fa-brands fa-instagram mr-1"></i> Instagram Brand & Reels
+                                </span>
+                                <span class="text-xs text-gray-400 font-medium">5,579 Followers • 682 Posts</span>
+                            </div>
+
+                            <!-- Simulated Grid of Ohayo Sushi Reels + Manga Panels -->
+                            <div class="grid grid-cols-3 gap-2.5">
+                                <div class="bg-amber-400/10 border border-amber-400/40 rounded-xl p-2.5 flex flex-col justify-between h-36">
+                                    <span class="text-[10px] font-extrabold bg-neonYellow text-darkBg px-1.5 py-0.5 rounded w-fit">MANGA SFX</span>
+                                    <div>
+                                        <p class="text-xs font-extrabold text-neonYellow">ガタッ! キラッ!</p>
+                                        <p class="text-[11px] font-bold text-white mt-0.5">NEW MENU: ENOKI SERIES</p>
+                                    </div>
+                                    <span class="text-[10px] text-gray-300">Comic Action Lines</span>
+                                </div>
+                                <div class="bg-coralRed/10 border border-coralRed/40 rounded-xl p-2.5 flex flex-col justify-between h-36">
+                                    <span class="text-[10px] font-extrabold bg-coralRed text-white px-1.5 py-0.5 rounded w-fit">PINNED REEL</span>
+                                    <div>
+                                        <p class="text-xs font-extrabold text-white">"Enoki Ramen" Taste Reaction</p>
+                                        <p class="text-[10px] text-gray-300 mt-0.5">Close-up food B-roll + creator reaction</p>
+                                    </div>
+                                    <span class="text-[10px] text-coralRed font-semibold"><i class="fa-solid fa-thumbtack mr-1"></i> Top Performing</span>
+                                </div>
+                                <div class="bg-electricCyan/10 border border-electricCyan/40 rounded-xl p-2.5 flex flex-col justify-between h-36">
+                                    <span class="text-[10px] font-extrabold bg-electricCyan text-darkBg px-1.5 py-0.5 rounded w-fit">CHARACTER IP</span>
+                                    <div>
+                                        <p class="text-xs font-extrabold text-white">BEST SELLER Mascot Visuals</p>
+                                        <p class="text-[10px] text-gray-300 mt-0.5">Expressive chibi mascot & bold pop text</p>
+                                    </div>
+                                    <span class="text-[10px] text-electricCyan">Illustrator + Canva</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Content -->
+                        <div class="p-6">
+                            <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-1">
+                                Ohayo Sushi Official (<span class="text-coralRed">@ohayosushiofficial</span>)
+                            </h3>
+                            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                                Reels Video Editor, Social Media Creative & Manga-Style Designer
+                            </p>
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Produced engaging Instagram Reels (including pinned creator taste-test videos) and high-impact manga/comic-inspired campaign visuals featuring Japanese onomatopoeia (<em>"ガタッ"</em>, <em>"キラッ"</em>), action speed-lines, and expressive mascot storytelling—directly transferable to animated show edits.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">Instagram Reels</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">Manga / Comic Visuals</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">Adobe Illustrator</span>
+                                <span class="text-xs bg-darkBg border border-cardBorder px-2.5 py-1 rounded-md text-gray-300">VN & CapCut</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6">
+                        <a href="https://www.instagram.com/ohayosushiofficial/" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-darkBg hover:bg-coralRed hover:text-white border border-coralRed/50 text-coralRed font-bold text-sm py-3 rounded-xl transition-all">
+                            <i class="fa-brands fa-instagram"></i> View Profile & Reels (@ohayosushiofficial)
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Run Monster Run Episode 2 Pitch Concept -->
+                <article id="pitch-rmr" class="project-card lg:col-span-2 bg-gradient-to-r from-[#161B26] via-[#1A1F2E] to-[#161B26] border-2 border-neonYellow/70 rounded-2xl p-6 sm:p-8 relative overflow-hidden" data-category="animation">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-6">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonYellow text-darkBg text-xs font-extrabold uppercase tracking-wider mb-3">
+                                <i class="fa-solid fa-bolt"></i> Custom Pitch Concept for Run Monster Run
+                            </div>
+                            <h3 class="font-display text-2xl sm:text-3xl font-bold text-white">
+                                Episode 2 Short-Form Edit Blueprint: Turning Animated Chaos Into Viral Clips
+                            </h3>
+                            <p class="text-gray-300 text-sm sm:text-base mt-2 max-w-3xl">
+                                How I will transform existing <strong>Run Monster Run (Episode 2)</strong> footage into high-retention TikToks, YouTube Shorts, and Reels that activate fandom energy and trigger shares.
+                            </p>
+                        </div>
+                        <button onclick="toggleBlueprint()" id="blueprint-toggle-btn" class="shrink-0 bg-neonYellow hover:bg-yellow-300 text-darkBg font-bold text-sm px-5 py-3 rounded-xl comic-shadow transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-sliders"></i> <span id="blueprint-btn-text">Inspect 3-Step Edit Timeline</span>
+                        </button>
+                    </div>
+
+                    <!-- Interactive 3-Part Editing Breakdown -->
+                    <div id="blueprint-details" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        <div class="bg-darkBg/90 border border-cardBorder p-5 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-neonYellow font-display font-bold text-sm">0:00 – 0:03 • THE HOOK</span>
+                                <span class="text-xs bg-neonYellow/15 text-neonYellow px-2 py-0.5 rounded font-semibold">Pattern Interrupt</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1.5">Instant Chaos & Curiosity Caption</h4>
+                            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                                Start mid-action at Episode 2's funniest or most unexpected monster twist. Add a punchy zoom-in, comic impact SFX, and relatable fandom text overlay (e.g., <em>"Bro really thought that plan would work 💀"</em>).
+                            </p>
+                        </div>
+
+                        <div class="bg-darkBg/90 border border-cardBorder p-5 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-electricCyan font-display font-bold text-sm">0:03 – 0:18 • PACING & MEMES</span>
+                                <span class="text-xs bg-electricCyan/15 text-electricCyan px-2 py-0.5 rounded font-semibold">Zero Dead Air</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1.5">Rhythmic Cuts & Fandom Humor</h4>
+                            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                                Tighten dialogue pauses, sync beats to trending TikTok/Reels audio, isolate iconic character expressions for meme reaction cuts, and layer bold kinetic subtitles for sound-off scrollers.
+                            </p>
+                        </div>
+
+                        <div class="bg-darkBg/90 border border-cardBorder p-5 rounded-xl">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-coralRed font-display font-bold text-sm">0:18 – 0:25 • PAYOFF & LOOP</span>
+                                <span class="text-xs bg-coralRed/15 text-coralRed px-2 py-0.5 rounded font-semibold">Share Trigger</span>
+                            </div>
+                            <h4 class="font-bold text-white text-base mb-1.5">Comedic Freeze-Frame & Seamless Loop</h4>
+                            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                                End on a cliffhanger punchline or character reaction that loops cleanly back into frame 1—boosting average watch time (>100%) and prompting viewers to tag friends or check out the full episode.
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4: Nusa Warna Social Media & Short-Form Video -->
+                <article class="project-card lg:col-span-2 bg-cardBg border border-cardBorder rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:border-neonYellow/50 transition-all" data-category="brand">
+                    <div class="space-y-2 max-w-3xl">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-300 text-xs font-bold">
+                                Social Media Marketing & Daily Reels/Stories
+                            </span>
+                            <span class="text-xs text-gray-400">Jan 2026 – Apr 2026</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-white">
+                            Nusa Warna — Short-Form Video & Growth Campaign
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Filmed and edited daily behind-the-scenes production and customer transaction clips using <strong>CapCut & Canva</strong> for Instagram Stories and Reels. Grew organic followers by <strong>+369</strong>, coordinated local creator giveaway collaborations, and scaled Meta Ads to generate <strong>84–100 monthly WhatsApp inquiries</strong>.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap md:flex-col gap-2 shrink-0 w-full md:w-auto">
+                        <div class="bg-darkBg border border-cardBorder px-4 py-2.5 rounded-xl text-center">
+                            <div class="text-neonYellow font-display font-bold text-lg">+369</div>
+                            <div class="text-[11px] text-gray-400">Organic Followers</div>
+                        </div>
+                        <div class="bg-darkBg border border-cardBorder px-4 py-2.5 rounded-xl text-center">
+                            <div class="text-electricCyan font-display font-bold text-lg">84–100/mo</div>
+                            <div class="text-[11px] text-gray-400">Ad Conversions</div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Editing Style & Toolkit Section -->
+    <section id="toolkit" class="py-16 sm:py-24 bg-[#10131A] border-t border-cardBorder">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="max-w-2xl mb-12">
+                <span class="text-electricCyan font-semibold text-xs uppercase tracking-wider">Why Me for Run Monster Run</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold mt-1">My Editing Instincts & Creative Stack</h2>
+                <p class="text-gray-400 text-sm sm:text-base mt-3">
+                    Great short-form editing isn't just technical cuts—it's understanding timing, internet humor, and why someone hits "Share" within 5 seconds.
+                </p>
+            </div>
+
+            <!-- 3 Pillars -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                    <div class="w-11 h-11 rounded-xl bg-neonYellow/15 text-neonYellow flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-magnet"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">2-Second Hook Psychology</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Proven on <span class="text-gray-200">@masdomos</span>: pairing curiosity-gap headlines, POV framing, and immediate visual movement so viewers never swipe past frame one.
+                    </p>
+                </div>
+
+                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                    <div class="w-11 h-11 rounded-xl bg-coralRed/15 text-coralRed flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Anime & Manga Visual Language</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Demonstrated in <span class="text-gray-200">@ohayosushiofficial</span>: comfortable designing comic action lines, Japanese sound-effect overlays, and expressive character-driven framing.
+                    </p>
+                </div>
+
+                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                    <div class="w-11 h-11 rounded-xl bg-electricCyan/15 text-electricCyan flex items-center justify-center text-xl mb-4">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Deep Platform Intuition</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        5 years of evaluating hundreds of social videos as a Content Moderator gave me pattern recognition for viral pacing, audio trends, and community-safe creativity.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tools Badges -->
+            <div class="bg-cardBg border border-cardBorder rounded-2xl p-6">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Production & Design Software Stack</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-neonYellow transition-colors">
+                        <div class="font-bold text-white text-sm">CapCut</div>
+                        <div class="text-[11px] text-neonYellow mt-0.5">Short-Form & Captions</div>
+                    </div>
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-electricCyan transition-colors">
+                        <div class="font-bold text-white text-sm">VN Editor</div>
+                        <div class="text-[11px] text-electricCyan mt-0.5">Keyframe & Speed Ramps</div>
+                    </div>
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-coralRed transition-colors">
+                        <div class="font-bold text-white text-sm">Filmora</div>
+                        <div class="text-[11px] text-coralRed mt-0.5">Multi-Track Cuts & SFX</div>
+                    </div>
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-neonYellow transition-colors">
+                        <div class="font-bold text-white text-sm">Illustrator</div>
+                        <div class="text-[11px] text-gray-400 mt-0.5">Custom Vector & SFX Art</div>
+                    </div>
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-electricCyan transition-colors">
+                        <div class="font-bold text-white text-sm">Photoshop</div>
+                        <div class="text-[11px] text-gray-400 mt-0.5">Thumbnails & Cutouts</div>
+                    </div>
+                    <div class="bg-darkBg border border-cardBorder rounded-xl p-3.5 text-center hover:border-coralRed transition-colors">
+                        <div class="font-bold text-white text-sm">Canva</div>
+                        <div class="text-[11px] text-gray-400 mt-0.5">Rapid Social Layouts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compact Experience & Education Timeline -->
+    <section id="experience" class="py-16 sm:py-24 border-t border-cardBorder">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div>
+                    <span class="text-neonYellow font-semibold text-xs uppercase tracking-wider">Track Record</span>
+                    <h2 class="font-display text-3xl font-bold mt-1">Experience & Education</h2>
+                    <p class="text-gray-400 text-sm mt-3 leading-relaxed">
+                        A blend of hands-on social media content creation, high-volume video moderation, and an Informatics Engineering background.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="bg-cardBg border border-cardBorder p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-bold text-white">Social Media Marketing — Nusa Warna</h3>
+                            <p class="text-xs text-gray-400 mt-1">Content planning, daily CapCut/Canva video editing, influencer giveaways & Meta Ads.</p>
+                        </div>
+                        <span class="text-xs font-semibold text-neonYellow bg-neonYellow/10 px-3 py-1 rounded-full w-fit shrink-0">Jan 2026 – Apr 2026</span>
+                    </div>
+
+                    <div class="bg-cardBg border border-cardBorder p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-bold text-white">Content Moderator — Gearinc Service Indonesia & WS Teknologi</h3>
+                            <p class="text-xs text-gray-400 mt-1">Moderated 300+ social media videos & text assets with 100% KPI accuracy on integrity & platform safety.</p>
+                        </div>
+                        <span class="text-xs font-semibold text-electricCyan bg-electricCyan/10 px-3 py-1 rounded-full w-fit shrink-0">Sep 2020 – Oct 2025</span>
+                    </div>
+
+                    <div class="bg-cardBg border border-cardBorder p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-bold text-white">SEO Specialist & Full-Stack Digital Marketing — Kulinear & RevoU</h3>
+                            <p class="text-xs text-gray-400 mt-1">Ranked 10+ articles on Google Page 1 (>10k impressions) & built social branding creatives.</p>
+                        </div>
+                        <span class="text-xs font-semibold text-gray-300 bg-gray-800 px-3 py-1 rounded-full w-fit shrink-0">Jan 2023 – Jul 2024</span>
+                    </div>
+
+                    <div class="bg-cardBg border border-cardBorder p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="font-bold text-white">Bachelor of Informatics Engineering — Univ. Muhammadiyah Malang</h3>
+                            <p class="text-xs text-gray-400 mt-1">Technical problem-solving, digital media fundamentals & analytical thinking.</p>
+                        </div>
+                        <span class="text-xs font-semibold text-gray-400 bg-darkBg border border-cardBorder px-3 py-1 rounded-full w-fit shrink-0">2015 – 2019</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Ready-to-Send Application CTA -->
+    <footer class="py-16 bg-[#090B0F] border-t border-cardBorder">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <span class="inline-block px-3 py-1 rounded-full bg-neonYellow/15 text-neonYellow text-xs font-bold mb-4">
+                Ready to Start Immediately
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mb-4">
+                Let's Turn <span class="text-neonYellow">Run Monster Run</span> Into Everyone's Favorite Feed Clip!
+            </h2>
+            <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
+                Available right away to start cutting Episode 2 clips, testing hooks, and bringing fresh fandom ideas to your TikTok & Instagram Reels.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10">
+                <button onclick="copyText('dimas.nurpratama1303@gmail.com', 'Email copied to clipboard!')" class="bg-neonYellow hover:bg-yellow-300 text-darkBg font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2 comic-shadow">
+                    <i class="fa-solid fa-envelope"></i> Copy Email: dimas.nurpratama1303@gmail.com
+                </button>
+                <a href="https://wa.me/6285158493113" target="_blank" rel="noopener noreferrer" class="bg-cardBg hover:bg-gray-800 border border-cardBorder text-white font-bold px-6 py-3.5 rounded-xl transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400 text-lg"></i> WhatsApp: +62 851-5849-3113
+                </a>
+            </div>
+
+            <div class="text-xs text-gray-500 pt-6 border-t border-cardBorder/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span>© 2026 Dimas Nurpratama — Short Video Editor Portfolio</span>
+                <div class="flex items-center gap-5">
+                    <a href="https://www.tiktok.com/@masdomos" target="_blank" rel="noopener noreferrer" class="hover:text-electricCyan transition-colors">TikTok (@masdomos)</a>
+                    <a href="https://www.instagram.com/ohayosushiofficial/" target="_blank" rel="noopener noreferrer" class="hover:text-coralRed transition-colors">Instagram (@ohayosushiofficial)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-sm p-4">
+        <div class="bg-cardBg border border-cardBorder rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white w-8 h-8 rounded-lg bg-darkBg flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-display text-2xl font-bold text-white mb-1">Work With Dimas</h3>
+            <p class="text-xs text-gray-400 mb-5">Available immediately for Short Video Editing & Reels/TikTok projects.</p>
+
+            <div class="space-y-3">
+                <div class="bg-darkBg border border-cardBorder p-3.5 rounded-xl flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-gray-400">Email Address</div>
+                        <div class="text-sm font-semibold text-white">dimas.nurpratama1303@gmail.com</div>
+                    </div>
+                    <button onclick="copyText('dimas.nurpratama1303@gmail.com', 'Email copied!')" class="bg-neonYellow text-darkBg text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-yellow-300">
+                        Copy
+                    </button>
+                </div>
+
+                <div class="bg-darkBg border border-cardBorder p-3.5 rounded-xl flex items-center justify-between">
+                    <div>
+                        <div class="text-[11px] text-gray-400">Phone / WhatsApp</div>
+                        <div class="text-sm font-semibold text-white">+62 851-5849-3113</div>
+                    </div>
+                    <a href="https://wa.me/6285158493113" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-darkBg text-xs font-bold px-3 py-1.5 rounded-lg hover:bg-green-400">
+                        Chat
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5 pt-2">
+                    <a href="https://www.tiktok.com/@masdomos" target="_blank" rel="noopener noreferrer" class="bg-darkBg hover:border-electricCyan border border-cardBorder p-3 rounded-xl text-center text-xs font-bold text-electricCyan">
+                        <i class="fa-brands fa-tiktok mr-1"></i> @masdomos
+                    </a>
+                    <a href="https://www.instagram.com/ohayosushiofficial/" target="_blank" rel="noopener noreferrer" class="bg-darkBg hover:border-coralRed border border-cardBorder p-3 rounded-xl text-center text-xs font-bold text-coralRed">
+                        <i class="fa-brands fa-instagram mr-1"></i> @ohayosushiofficial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter Portfolio Projects
+        function filterProjects(category, btnElement) {
+            // Update active button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-neonYellow', 'text-darkBg', 'font-bold');
+                btn.classList.add('bg-cardBg', 'text-gray-300', 'border', 'border-cardBorder');
+            });
+            btnElement.classList.remove('bg-cardBg', 'text-gray-300', 'border', 'border-cardBorder');
+            btnElement.classList.add('bg-neonYellow', 'text-darkBg', 'font-bold');
+
+            // Show/hide cards
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Toggle Run Monster Run Edit Blueprint Breakdown
+        function toggleBlueprint() {
+            const details = document.getElementById('blueprint-details');
+            const btnText = document.getElementById('blueprint-btn-text');
+            if (details.classList.contains('hidden')) {
+                details.classList.remove('hidden');
+                btnText.textContent = 'Hide 3-Step Edit Timeline';
+            } else {
+                details.classList.add('hidden');
+                btnText.textContent = 'Inspect 3-Step Edit Timeline';
+            }
+        }
+
+        // Clipboard Copy Helper with Toast Feedback
+        function copyText(text, message) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(message);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2800);
+        }
+
+        // Contact Modal Controls
+        function openContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contact-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactModal();
+            }
+        });
+    </script>
+</body>
+</html>
